@@ -172,7 +172,7 @@ def parser_args():
     for p in [ bin_mode,generate_data,cluster]:
         p.add_argument('-o','--output',type=str,help='Output directory (will be created if non-existent)',required=True, default=None)
         p.add_argument('-fa','--fasta',type=str, help='Path to the input fasta file.',required=True, default=None)
-        p.add_argument('--bin_length', default=80000,help='Minimum bin size in bps (Default: 80000)')
+        p.add_argument('--bin_length', type=int, default=80000,help='Minimum bin size in bps (Default: 80000)')
     for p in [ bin_mode, generate_data]:
         p.add_argument('-b','--bam',type=str, nargs='+',help='Path to the input BAM(.bam) file. ',required=True,default=None)
         p.add_argument(
@@ -183,7 +183,7 @@ def parser_args():
         )
     for p in [bin_mode, cluster]:
         p.add_argument('--evaluation',type=str, default="no_markers", help='Evaluation model used(no_markers, markers110, markers35, default: nomarkers')
-        p.add_argument('-a','--akeep',default=0.6, help='The cut-off parameters of re-clustering decision model(0~1, default:0.6)')
+        p.add_argument('-a','--akeep',type=float, default=0.6, help='The cut-off parameters of re-clustering decision model(0~1, default:0.6)')
         p.add_argument('--multi',action='store_true', default=False, help='Cluster uses more samples')
     # ===== add training args for bin mode =====
     bin_mode.add_argument('--epoch','-n', type=int, default=300,
