@@ -121,8 +121,8 @@ def mcluster(logger, outdir, fastadir, embeddingdir, bin_length, feature,a):
     for i in range(len(nsample)-1):
         latent = embedding[nsample[i]:nsample[i+1]]
         labels, keep = bin_cluster(logger, latent, contig2marker, contig_dict, contig_list, contig_all, bin_length, feature, a)
-        pd.DataFrame({'label':labels},index=contig_all).to_csv(f'{outdir}/label_{samplename[i]}.csv')
-        write_bin(contig_all, labels,contig_dict,f"{output}/output_bins_{samplename[i]}",bin_length)
+        pd.DataFrame({'label':labels},index=contig_all).to_csv(f'{outdir}/label_{samplenames[i]}.csv')
+        write_bin(contig_all, labels,contig_dict,f"{outdir}/output_bins_{samplenames[i]}",bin_length)
 
 
 def msample(names):
